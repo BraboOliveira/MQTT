@@ -1,11 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
 import React from 'react';
 import {
   SafeAreaView,
@@ -14,6 +6,7 @@ import {
   View,
   Text,
   StatusBar,
+  Button,
 } from 'react-native';
 
 import {
@@ -22,6 +15,7 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 import MqttLog from './MqttLog';
+import Envio from './MqttLog';
 
 function App() {
   return (
@@ -31,12 +25,17 @@ function App() {
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"
           style={styles.scrollView}>
-          <Header />
           <View style={styles.body}>
             <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Let's test MQTT</Text>
+              <Text style={styles.sectionTitle}>App Teste MQTT </Text>
             </View>
             <MqttLog style={styles.sectionContainer} />
+            <Button
+              onPress={()=>{}}
+              title="Envio"
+              color="#841584"
+              accessibilityLabel="Learn more about this purple button"
+            />
           </View>
         </ScrollView>
       </SafeAreaView>

@@ -24,7 +24,7 @@ export default function MqttLog (props){
   const [text, setText] = useState('');
 
   const [clientInfo, setClientInfo] = useState({
-    BROKER: 'broker.mqttdashboard.com',
+    BROKER: 'broker.hivemq.com',
     PORT: '8000',
     TOPIC: 'WORLD'
   });
@@ -40,9 +40,9 @@ export default function MqttLog (props){
   useEffect(() => {
     try{
       client.connect({onSuccess: onConnect, useSSL: false});
-      console.log('Connected!');
+      console.log('Conectado!');
     } catch (err) {
-      console.log(`Can not connect. Error: ${err.message}.`);
+      console.log(`Erro na conexão. Error: ${err.message}.`);
     }
     client.onConnectionLost = onConnectionLost;
     client.onMessageArrived = onMessageArrived;
@@ -56,7 +56,13 @@ export default function MqttLog (props){
 
   function onConnect () {
     try{
+      //se inscrever em tópico
       client.subscribe(clientInfo.TOPIC);
+      //Envio de Mensagem
+      message = new Paho.MQTT.Message("Vamos");
+      message.destinationName = "WORLD";
+      client.send(message);
+      //Termina Envio
       pushText(`Client subscribed in Topic ${clientInfo.TOPIC}!`);
     } catch (err) {
       push('Client can not subscribed!');
@@ -71,12 +77,18 @@ export default function MqttLog (props){
   };
 
   function onMessageArrived (message) {
-    pushText(`new message: ${message.payloadString}`);
+    pushText(`Nova Mensagem: ${message.payloadString}`);
+  };
+
+  function Envio(message) {
+    message = new Paho.MQTT.Message("Vamos");
+    message.destinationName = "WORLD";
+    client.send(message);
   };
 
   return (
     <View style={style}>
-      <Text style={{fontSize:20, marginBottom: 10}}>System Log</Text>
+      <Text style={{fontSize:20, marginBottom: 10}}>Log:</Text>
       <Text style={{fontSize: 18, alignContent: 'center'}}>{text}</Text>
     </View>
   );
