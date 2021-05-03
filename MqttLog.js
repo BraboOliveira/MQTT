@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import init from 'react_native_mqtt';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, Button} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 init({
@@ -26,7 +26,8 @@ export default function MqttLog (props){
   const [clientInfo, setClientInfo] = useState({
     BROKER: 'broker.hivemq.com',
     PORT: '8000',
-    TOPIC: 'WORLD'
+    TOPIC: 'Distancia',
+    TOPIC2: 'WORLD'
   });
   
   const client = 
@@ -58,6 +59,7 @@ export default function MqttLog (props){
     try{
       //se inscrever em tópico
       client.subscribe(clientInfo.TOPIC);
+      client.subscribe(clientInfo.TOPIC2);
       //Envio de Mensagem
       message = new Paho.MQTT.Message("Vamos");
       message.destinationName = "WORLD";
@@ -82,14 +84,21 @@ export default function MqttLog (props){
 
   function Envio(message) {
     message = new Paho.MQTT.Message("Vamos");
-    message.destinationName = "WORLD";
+    message.destinationName = "Distancia";
     client.send(message);
   };
 
   return (
     <View style={style}>
       <Text style={{fontSize:20, marginBottom: 10}}>Log:</Text>
-      <Text style={{fontSize: 18, alignContent: 'center'}}>{text}</Text>
+      <Text style={{fontSize: 18, alignContent: 'center'}}>{text}mm</Text>
+      <Text style={{fontSize: 18, alignContent: 'center'}}>{text}mm</Text>
+      <Button
+              onPress={()=>{}}
+              title="Envio"
+              color="#841584"
+              accessibilityLabel="Learn more about this purple button"
+      />
     </View>
   );
 }
