@@ -10,6 +10,7 @@
     "mqtt": "^4.2.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-google-charts": "^3.0.15",
     "react-scripts": "3.4.3"
   },
   "scripts": {

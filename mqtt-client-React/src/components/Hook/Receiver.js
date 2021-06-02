@@ -21,7 +21,7 @@ const Receiver = ({ payload }) => {
 
   return (
     <Card
-      title="Receiver"
+      title="Dados Recebidos"
     >
       <List
         size="small"

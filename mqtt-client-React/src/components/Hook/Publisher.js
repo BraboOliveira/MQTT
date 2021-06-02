@@ -7,7 +7,7 @@ const Publisher = ({ publish }) => {
   const qosOptions = useContext(QosOption);
 
   const record = {
-    topic: 'testtopic/react',
+    topic: 'SensorPe',
     qos: 0,
   };
 
@@ -61,7 +61,7 @@ const Publisher = ({ publish }) => {
 
   return (
     <Card
-      title="Publisher"
+      title="Publicar"
     >
       {PublishForm}
     </Card>

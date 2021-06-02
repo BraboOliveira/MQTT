@@ -4,6 +4,8 @@ import Publisher from './Publisher';
 import Subscriber from './Subscriber';
 import Receiver from './Receiver';
 import mqtt from 'mqtt';
+import { Card } from 'antd';
+import { Chart } from "react-google-charts";
 
 export const QosOption = createContext([])
 const qosOption = [
@@ -96,6 +98,36 @@ const HookMqtt = () => {
 
   return (
     <>
+      <Card title="Projeto Sensor de Passos">
+      <Chart
+  chartType="ScatterChart"
+  data={[['x', 'mm'], [0, 0], [1, 10], [2, 23], [3, 17], [4, 18], [5, 9]]}
+  chartEvents={[
+    {
+      eventName: 'select',
+      callback: ({ chartWrapper }) => {
+        const chart = chartWrapper.getChart()
+        const selection = chart.getSelection()
+        if (selection.length === 1) {
+          const [selectedItem] = selection
+          const dataTable = chartWrapper.getDataTable()
+          const { row, column } = selectedItem
+          alert(
+            'You selected : ' +
+              JSON.stringify({
+                row,
+                column,
+                value: dataTable.getValue(row, column),
+              }),
+            null,
+            2,
+          )
+        }
+        console.log(selection)
+      },
+    },
+  ]}
+/></Card>
       <Connection connect={mqttConnect} disconnect={mqttDisconnect} connectBtn={connectStatus} />
       <QosOption.Provider value={qosOption}>
         <Subscriber sub={mqttSub} unSub={mqttUnSub} showUnsub={isSubed} />

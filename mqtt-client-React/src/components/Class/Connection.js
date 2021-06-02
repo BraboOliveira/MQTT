@@ -6,9 +6,9 @@ class Connection extends React.Component {
     super(props);
     this.state = {
       record: {
-        host: "broker.emqx.io",
+        host: "broker.hivemq.com",
         clientId: `mqttjs_ + ${Math.random().toString(16).substr(2, 8)}`,
-        port: 8083,
+        port: 8000,
       },
     };
   }
@@ -58,7 +58,7 @@ class Connection extends React.Component {
             </Form.Item>
           </Col>
           <Col span={8}>
-            <Form.Item label="Port" name="port">
+            <Form.Item label="Porta" name="port">
               <Input />
             </Form.Item>
           </Col>
@@ -68,12 +68,12 @@ class Connection extends React.Component {
             </Form.Item>
           </Col>
           <Col span={8}>
-            <Form.Item label="Username" name="username">
+            <Form.Item label="Usuario" name="username">
               <Input />
             </Form.Item>
           </Col>
           <Col span={8}>
-            <Form.Item label="Password" name="password">
+            <Form.Item label="Senha" name="password">
               <Input />
             </Form.Item>
           </Col>
@@ -89,7 +89,7 @@ class Connection extends React.Component {
             {this.props.connectBtn}
           </Button>,
           <Button danger onClick={this.props.disconnect}>
-            Disconnect
+            Desconectar
           </Button>,
         ]}
       >

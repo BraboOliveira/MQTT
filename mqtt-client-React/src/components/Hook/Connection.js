@@ -4,9 +4,9 @@ import { Card, Button, Form, Input, Row, Col } from 'antd';
 const Connection = ({ connect, disconnect, connectBtn }) => {
   const [form] = Form.useForm();
   const record = {
-    host: 'broker.emqx.io',
+    host: 'broker.hivemq.com',
     clientId: `mqttjs_ + ${Math.random().toString(16).substr(2, 8)}`,
-    port: 8083,
+    port: 8000,
   };
   const onFinish = (values) => {
     const { host, clientId, port, username, password } = values;
@@ -59,7 +59,7 @@ const Connection = ({ connect, disconnect, connectBtn }) => {
         </Col>
         <Col span={8}>
           <Form.Item
-            label="Port"
+            label="Porta"
             name="port"
           >
             <Input />
@@ -75,7 +75,7 @@ const Connection = ({ connect, disconnect, connectBtn }) => {
         </Col>
         <Col span={8}>
           <Form.Item
-            label="Username"
+            label="Usuário"
             name="username"
           >
             <Input />
@@ -83,7 +83,7 @@ const Connection = ({ connect, disconnect, connectBtn }) => {
         </Col>
         <Col span={8}>
           <Form.Item
-            label="Password"
+            label="Senha"
             name="password"
           >
             <Input />
@@ -95,7 +95,7 @@ const Connection = ({ connect, disconnect, connectBtn }) => {
 
   return (
     <Card
-      title="Connection"
+      title="Conexão"
       actions={[
         <Button type="primary" onClick={handleConnect}>{connectBtn}</Button>,
         <Button danger onClick={handleDisconnect}>Disconnect</Button>
