@@ -19,24 +19,24 @@ export const DATA = [
       itemDesc:
         'Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, lorem ipsum',
     },
-    {
-      id: '58694a0f-3da1-471f-bd96-145571e29d72',
-      titulo: 'Arandela',
-      imagem: require('../../../assets/images/images.png'),
-      estudio: 'Tom&Jim Designs',
-      itemName: 'Jerry',
-      preco: 33.43,
-      itemDesc:
-        'There are many variations of passages of Lorem Ipsum available, but the majority',
-    },
-    {
-      id: 'bd7acbea-c1b1-462c2-aed5-3ad53abb28ba',
-      titulo: 'Luminária de chão',
-      imagem: require('../../../assets/images/images.png'),
-      estudio: 'Kerry&King Designs',
-      itemName: 'Jack',
-      preco: 67.23,
-      itemDesc:
-        'Cicero, written in 45 BC. This book is a treatise on the theory of ethics,',
-    },
+    // {
+    //   id: '58694a0f-3da1-471f-bd96-145571e29d72',
+    //   titulo: 'Arandela',
+    //   imagem: require('../../../assets/images/images.png'),
+    //   estudio: 'Tom&Jim Designs',
+    //   itemName: 'Jerry',
+    //   preco: 33.43,
+    //   itemDesc:
+    //     'There are many variations of passages of Lorem Ipsum available, but the majority',
+    // },
+    // {
+    //   id: 'bd7acbea-c1b1-462c2-aed5-3ad53abb28ba',
+    //   titulo: 'Luminária de chão',
+    //   imagem: require('../../../assets/images/images.png'),
+    //   estudio: 'Kerry&King Designs',
+    //   itemName: 'Jack',
+    //   preco: 67.23,
+    //   itemDesc:
+    //     'Cicero, written in 45 BC. This book is a treatise on the theory of ethics,',
+    // },
   ];

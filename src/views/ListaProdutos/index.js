@@ -2,6 +2,7 @@ import React from 'react'
 import { View, Text, FlatList, StyleSheet, Image} from 'react-native'
 import Cabecalho from '../components/Cabecalho';
 import {DATA} from '../components/Cabecalho/data';
+import MqttLog from '../components/Mqtt/MqttLog';
 export default function ListaProdutos() {
 
     const Item = ({ imagem, titulo }) => (
@@ -12,6 +13,7 @@ export default function ListaProdutos() {
     );
     return (
         <View>
+          
             <FlatList
                 numColumns={2}
                 data={DATA}
@@ -21,6 +23,7 @@ export default function ListaProdutos() {
                   <Cabecalho/>
                 }
             />
+            <MqttLog/>
         </View>
     )
 }
@@ -43,5 +46,6 @@ const styles = StyleSheet.create({
   texto:{
     marginTop: 8,
     fontSize: 16,
+    margin: 30,
   }
 })

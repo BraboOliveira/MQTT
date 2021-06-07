@@ -22,12 +22,14 @@ export default function MqttLog (props){
   const { style } = props;
   const clientID = Math.floor(Math.random() * 10000) + 1;
   const [text, setText] = useState('');
+  const [listaMqtt,setListaMqtt] = useState([])
+  const [info,setInfo] = useState('')
 
   const [clientInfo, setClientInfo] = useState({
     BROKER: 'broker.hivemq.com',
     PORT: '8000',
     TOPIC: 'Distancia',
-    TOPIC2: 'WORLD'
+    TOPIC2: 'Distancia2'
   });
   
   const client = 
@@ -51,7 +53,7 @@ export default function MqttLog (props){
   }, []);
   
   function pushText (entry) {
-    setText(entry);
+    setInfo(entry);
     console.log(entry);
   };
 
@@ -79,7 +81,15 @@ export default function MqttLog (props){
   };
 
   function onMessageArrived (message) {
-    pushText(`Nova Mensagem: ${message.payloadString}`);
+    if(message.payloadString.substr(0, 6) == 'frente'){
+      console.log(message.payloadString.substr(0, 6))
+      setText(`Nova Mensagem: ${message.payloadString}`);
+    }
+    if(message.payloadString.substr(0, 4) == 'tras'){
+      console.log(message.payloadString.substr(0, 4))
+      setInfo(`Nova Mensagem: ${message.payloadString}`);
+    }
+    // setText(`Nova Mensagem: ${message.payloadString}`);
   };
 
   function Envio(message) {
@@ -90,15 +100,15 @@ export default function MqttLog (props){
 
   return (
     <View style={style}>
-      <Text style={{fontSize:20, marginBottom: 10}}>Log:</Text>
-      <Text style={{fontSize: 18, alignContent: 'center'}}>{text}mm</Text>
-      <Text style={{fontSize: 18, alignContent: 'center'}}>{text}mm</Text>
-      <Button
+      <Text style={{fontSize:20, marginBottom: 10}}>Quantidades de toque:</Text>
+      <Text style={{fontSize: 18, alignContent: 'center'}}>{text}</Text>
+      <Text style={{fontSize: 18, alignContent: 'center'}}>{info}</Text>
+      {/* <Button
               onPress={()=>{}}
               title="Envio"
               color="#841584"
               accessibilityLabel="Learn more about this purple button"
-      />
+      /> */}
     </View>
   );
 }
