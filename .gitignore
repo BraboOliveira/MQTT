@@ -1,6 +1,7 @@
 # OSX
 #
 .DS_Store
+<<<<<<< Updated upstream
 
 # Xcode
 #
@@ -57,3 +58,7 @@ buck-out/
 
 # CocoaPods
 /ios/Pods/
+=======
+.idea
+node_modules
+>>>>>>> Stashed changes
