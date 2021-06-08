@@ -24,6 +24,7 @@ export default function MqttLog (props){
   const [text, setText] = useState('');
   const [listaMqtt,setListaMqtt] = useState([])
   const [info,setInfo] = useState('')
+  const [con,setCon] = useState('')
 
   const [clientInfo, setClientInfo] = useState({
     BROKER: 'broker.hivemq.com',
@@ -82,12 +83,20 @@ export default function MqttLog (props){
 
   function onMessageArrived (message) {
     if(message.payloadString.substr(0, 7) == 'frontal'){
-      console.log(message.payloadString.substr(0, 7))
-      setText(`Sensor ${message.payloadString}`);
+      console.log(message.payloadString.substr(7, 15))
+      // setText(`Frontal: ${message.payloadString.substr(7, 15)}`);
+      setText(message.payloadString.substr(7, 15));
     }
     if(message.payloadString.substr(0, 8) == 'traseiro'){
-      console.log(message.payloadString.substr(0, 8))
-      setInfo(`Sensor ${message.payloadString}`);
+      console.log(message.payloadString.substr(8, 15))
+      // setInfo(`Traseiro: ${message.payloadString.substr(8, 15)}`);
+      setInfo(message.payloadString.substr(8, 15));
+    }
+    console.log(message.payloadString.substr(0, 9))
+    if(message.payloadString.substr(0, 9) == 'conectado'){
+      console.log(message.payloadString.substr(9, 15))
+      // setInfo(`Traseiro: ${message.payloadString.substr(8, 15)}`);
+      setCon(message.payloadString.substr(9, 15));
     }
     // setText(`Nova Mensagem: ${message.payloadString}`);
   };
@@ -101,8 +110,9 @@ export default function MqttLog (props){
   return (
     <View style={style}>
       <Text style={{fontSize:24, marginBottom: 10}}>Quantidades de toque:</Text>
-      <Text style={{fontSize: 24, alignContent: 'center'}}>{text}</Text>
-      <Text style={{fontSize: 24, alignContent: 'center'}}>{info}</Text>
+      <Text style={{fontSize: 24, alignContent: 'center'}}>Sensor Frontal: {text}</Text>
+      <Text style={{fontSize: 24, alignContent: 'center'}}>Sensor Traseiro: {info}</Text>
+      <Text style={{fontSize: 24, alignContent: 'center'}}>Status do Sensor:{con}</Text>
       {/* <Button
               onPress={()=>{Envio('teste')}}
               title="Envio"
