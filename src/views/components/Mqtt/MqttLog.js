@@ -63,11 +63,11 @@ export default function MqttLog (props){
       client.subscribe(clientInfo.TOPIC);
       client.subscribe(clientInfo.TOPIC2);
       //Envio de Mensagem
-      message = new Paho.MQTT.Message("Vamos");
-      message.destinationName = "WORLD";
-      client.send(message);
+      // message = new Paho.MQTT.Message("Vamos");
+      // message.destinationName = "WORLD";
+      // client.send(message);
       //Termina Envio
-      pushText(`Client subscribed in Topic ${clientInfo.TOPIC}!`);
+      // pushText(`Client subscribed in Topic ${clientInfo.TOPIC}!`);
     } catch (err) {
       push('Client can not subscribed!');
       console.log(`Client can not subscribed! Error: ${err.message}.`);
@@ -81,13 +81,13 @@ export default function MqttLog (props){
   };
 
   function onMessageArrived (message) {
-    if(message.payloadString.substr(0, 6) == 'frente'){
-      console.log(message.payloadString.substr(0, 6))
-      setText(`Nova Mensagem: ${message.payloadString}`);
+    if(message.payloadString.substr(0, 7) == 'frontal'){
+      console.log(message.payloadString.substr(0, 7))
+      setText(`Sensor ${message.payloadString}`);
     }
-    if(message.payloadString.substr(0, 4) == 'tras'){
-      console.log(message.payloadString.substr(0, 4))
-      setInfo(`Nova Mensagem: ${message.payloadString}`);
+    if(message.payloadString.substr(0, 8) == 'traseiro'){
+      console.log(message.payloadString.substr(0, 8))
+      setInfo(`Sensor ${message.payloadString}`);
     }
     // setText(`Nova Mensagem: ${message.payloadString}`);
   };
@@ -100,11 +100,11 @@ export default function MqttLog (props){
 
   return (
     <View style={style}>
-      <Text style={{fontSize:20, marginBottom: 10}}>Quantidades de toque:</Text>
-      <Text style={{fontSize: 18, alignContent: 'center'}}>{text}</Text>
-      <Text style={{fontSize: 18, alignContent: 'center'}}>{info}</Text>
+      <Text style={{fontSize:24, marginBottom: 10}}>Quantidades de toque:</Text>
+      <Text style={{fontSize: 24, alignContent: 'center'}}>{text}</Text>
+      <Text style={{fontSize: 24, alignContent: 'center'}}>{info}</Text>
       {/* <Button
-              onPress={()=>{}}
+              onPress={()=>{Envio('teste')}}
               title="Envio"
               color="#841584"
               accessibilityLabel="Learn more about this purple button"

@@ -34,17 +34,19 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     width: 100,
     height: 168,
-    margin: 8,
+    margin: 5,
     borderRadius: 8,
     justifyContent: 'center',
     alignItems: 'center',
   },
   imagem:{
-    width: 100,
-    height: 168,
+    margin: 5,
+    marginTop: 40,
+    width: '50%',
+    height: '50%',
   },
   texto:{
-    marginTop: 8,
+    marginTop: 20,
     fontSize: 16,
     margin: 30,
   }
