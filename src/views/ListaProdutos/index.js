@@ -1,19 +1,24 @@
 import React from 'react'
-import { View, Text, FlatList, StyleSheet, Image} from 'react-native'
+import { View, Text, FlatList, StyleSheet, Image, TouchableOpacity} from 'react-native'
 import Cabecalho from '../components/Cabecalho';
 import {DATA} from '../components/Cabecalho/data';
 import MqttLog from '../components/Mqtt/MqttLog';
-export default function ListaProdutos() {
 
-    const Item = ({ imagem, titulo }) => (
-        <View style={styles.containerItem}>
+export default function ListaProdutos({ navigation }) {
+    const Item = ({ imagem, titulo, onpress }) => (
+      <View style={styles.containerItem}>
+      <TouchableOpacity
+        onPress={() => navigation.navigate(onpress)}
+      >
+        <View style={styles.containerItem2}>
           <Image style={styles.imagem} source={imagem} resizeMode="contain"  />
           <Text style={styles.texto}>{titulo}</Text>
         </View>
+        </TouchableOpacity>
+      </View>
     );
     return (
         <View>
-          
             <FlatList
                 numColumns={2}
                 data={DATA}
@@ -23,6 +28,7 @@ export default function ListaProdutos() {
                   <Cabecalho/>
                 }
             />
+          
             <MqttLog/>
         </View>
     )
@@ -33,9 +39,13 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     width: 100,
-    height: 168,
+    height: 178,
     margin: 5,
     borderRadius: 8,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  containerItem2:{
     justifyContent: 'center',
     alignItems: 'center',
   },
