@@ -15,9 +15,39 @@ export default function App() {
       <Stack.Navigator>
         {/* <SafeAreaView style={styles.container}> */}
           {/* <Cabecalho/> */}
-          <Stack.Screen name="Home" component={ListaProdutos} />
-          <Stack.Screen name="Sensor Inercial" component={SensorInercial} />
-          <Stack.Screen name="Sensor de Passos" component={SensordePassos} />
+          <Stack.Screen 
+            name="Home" 
+            component={ListaProdutos} 
+            options={{ headerShown: false }} 
+          />
+          <Stack.Screen 
+            name="sensorinercial" 
+            component={SensorInercial} 
+            options={{
+              title: 'Sensor Inercial',
+              headerStyle: {
+                backgroundColor: '#f4511e',
+              },
+              headerTintColor: '#fff',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+              },
+            }}
+            />
+          <Stack.Screen 
+            name="sensordepassos"  
+            component={SensordePassos} 
+            options={{
+              title: 'Sensor de Passos',
+              headerStyle: {
+                backgroundColor: '#f4511e',
+              },
+              headerTintColor: '#fff',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+              },
+            }}
+            />
         {/* </SafeAreaView> */}
       </Stack.Navigator>
     </NavigationContainer>
