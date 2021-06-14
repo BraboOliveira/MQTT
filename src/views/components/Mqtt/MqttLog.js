@@ -112,9 +112,9 @@ export default function MqttLog (props){
       <Text style={{fontSize:24, marginBottom: 10}}>Quantidades de toque:</Text>
       <Text style={{fontSize: 24, alignContent: 'center'}}>Sensor Frontal: {text}</Text>
       <Text style={{fontSize: 24, alignContent: 'center'}}>Sensor Traseiro: {info}</Text>
-      <Text style={{fontSize: 24, alignContent: 'center'}}>Status do Sensor: {con}</Text>
+      <Text style={{fontSize: 24, alignContent: 'center'}}>Status do Sensor:{con}</Text>
       {/* <Button
-              onPress={()=>{}}
+              onPress={()=>{Envio('teste')}}
               title="Envio"
               color="#841584"
               accessibilityLabel="Learn more about this purple button"
