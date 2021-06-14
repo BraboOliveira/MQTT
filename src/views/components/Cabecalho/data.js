@@ -8,7 +8,7 @@ export const DATA = [
       preco: 92.1,
       itemDesc:
         'Contrary to popular belief, Lorem Ipsum is not simply random text',
-      onpress: 'sensordepassos',
+      onpress: 'Sensor de Passos',
     },
     {
       id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
@@ -19,7 +19,7 @@ export const DATA = [
       preco: 123.44,
       itemDesc:
         'Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, lorem ipsum',
-      onpress: 'sensorinercial',
+      onpress: 'Sensor Inercial',
     },
     // {
     //   id: '58694a0f-3da1-471f-bd96-145571e29d72',
