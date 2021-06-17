@@ -1,6 +1,7 @@
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
 #include "Adafruit_VL53L0X.h"
+#include <WiFiManager.h> 
 
 Adafruit_VL53L0X lox = Adafruit_VL53L0X();
 
@@ -38,6 +39,8 @@ void setup_wifi() {
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
     Serial.print(".");
+    WiFiManager wifiManager;
+    wifiManager.autoConnect("Sensor Pé Configurar");
   }
 
   randomSeed(micros());
@@ -79,7 +82,7 @@ void reconnect() {
     if (client.connect(clientId.c_str())) {
       Serial.println("connected");
       // Once connected, publish an announcement...
-      client.publish("braboChegou", "Conectado");
+      client.publish("Distancia", "conectadoConectado");
       // ... and resubscribe
 //      client.subscribe("SensorT");
 //      client.subscribe("SensorF");
@@ -136,10 +139,10 @@ void loop() {
     if (valueT > 300) {
       lastMsg = now;
       ++value1;
-      snprintf (msg, MSG_BUFFER_SIZE, "Toque Traseiro #%ld", value1);
+      snprintf (msg, MSG_BUFFER_SIZE, "traseiro2 %ld", value1);
       Serial.print("Publish message: ");
       Serial.println(msg);
-      client.publish("SensorT", msg);
+      client.publish("Distancia", msg);
     while(valueT > 300) {
       valueT = analogRead(sensorT);
       delay(10);
@@ -148,10 +151,10 @@ void loop() {
     if (valueF) {
       lastMsg = now;
       ++value2;
-      snprintf (msg, MSG_BUFFER_SIZE, "Toque Frontal #%ld", value2);
+      snprintf (msg, MSG_BUFFER_SIZE, "frontal2 %ld", value2);
       Serial.print("Mensagem Enviada: ");
       Serial.println(msg);
-      client.publish("SensorF", msg);
+      client.publish("Distancia", msg);
     while(valueF) {
       valueF = digitalRead(botao);
       delay(10);

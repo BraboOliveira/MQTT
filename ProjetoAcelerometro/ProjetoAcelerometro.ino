@@ -9,6 +9,7 @@
 #include <OSCMessage.h>
 #include <WiFiManager.h>         //https://github.com/tzapu/WiFiManager
 
+
 unsigned long Envio = millis();
 
 #include <PubSubClient.h>
@@ -61,7 +62,7 @@ VectorInt16 aa;         // [x, y, z]            accel sensor measurements
 VectorInt16 aaReal;     // [x, y, z]            gravity-free accel sensor measurements
 VectorInt16 aaWorld;    // [x, y, z]            world-frame accel sensor measurements
 VectorFloat gravity;    // [x, y, z]            gravity vector
-
+VectorInt16 gy;         // [x, y, z] 
 
 // uncomment "OUTPUT_TEAPOT_OSC" if you want output that matches the
 // format used for the InvenSense teapot demo
@@ -261,16 +262,32 @@ void mpu_loop()
     // display quaternion values in easy matrix form: w x y z
     mpu.dmpGetQuaternion(&q, fifoBuffer);
 #endif
+      Serial.println("----------------------------");
+      mpu.dmpGetAccel(&aa, fifoBuffer);
+      Serial.print("\tRaw Accl XYZ\t");
+      Serial.print(aa.x);
+      Serial.print("\t");
+      Serial.print(aa.y);
+      Serial.print("\t");
+      Serial.print(aa.z);
+      mpu.dmpGetGyro(&gy, fifoBuffer);
+      Serial.print("\tRaw Gyro XYZ\t");
+      Serial.print(gy.x);
+      Serial.print("\t");
+      Serial.print(gy.y);
+      Serial.print("\t");
+      Serial.print(gy.z);
+      Serial.println("----------------------------");
     // Send OSC message
     OSCMessage msg("/imuquat");
-    Serial.print("\tA");
-    Serial.print((float)q.w);
-    Serial.print("\tX");
-    Serial.print((float)q.x);
-    Serial.print("\tY");
-    Serial.print((float)q.y);
-    Serial.print("\tZ");
-    Serial.println((float)q.z);
+//    Serial.print("\tA");
+//    Serial.print((float)q.w);
+//    Serial.print("\tX");
+//    Serial.print((float)q.x);
+//    Serial.print("\tY");
+//    Serial.print((float)q.y);
+//    Serial.print("\tZ");
+//    Serial.println((float)q.z);
     msg.add((float)q.w);
     msg.add((float)q.x);
     msg.add((float)q.y);
@@ -296,12 +313,6 @@ void mpu_loop()
   }
 }
 
-/**************************/
-/*
-    Arduino loop function, called once 'setup' is complete (your own code
-    should go here)
-*/
-/**************************/
 void loop(void)
 {
   dmpDataReady();
