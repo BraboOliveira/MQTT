@@ -8,7 +8,7 @@ export default function Cabecalho() {
         <Text style={styles.text}>Sensor Passos</Text>
           <View style={styles.containerImage}>
             <Image source={
-              require('../../../assets/images/palmilha-icon.png')} 
+              require('../../../assets/images/logo.jpeg')} 
               style={styles.image}/>
           </View>
       </View>
