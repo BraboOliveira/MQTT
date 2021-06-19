@@ -79,37 +79,37 @@ export default function MqttLog (props){
   };
 
   function onMessageArrived (message) {
-    if(message.payloadString.substr(0, 7) == 'frontal1'){
-      console.log(message.payloadString.substr(7, 15))
+    if(message.payloadString.substr(0, 8) == 'frontal1'){
+      console.log(message.payloadString.substr(8, 20))
       // setText(`Frontal: ${message.payloadString.substr(7, 15)}`);
-      setText1(message.payloadString.substr(7, 15));
+      setText1(message.payloadString.substr(8, 20));
     }
-    if(message.payloadString.substr(0, 8) == 'traseiro1'){
-      console.log(message.payloadString.substr(8, 15))
+    if(message.payloadString.substr(0, 9) == 'traseiro1'){
+      console.log(message.payloadString.substr(9, 15))
       // setInfo(`Traseiro: ${message.payloadString.substr(8, 15)}`);
-      setInfo1(message.payloadString.substr(8, 15));
+      setInfo1(message.payloadString.substr(9, 15));
     }
     console.log(message.payloadString.substr(0, 9))
     if(message.payloadString.substr(0, 9) == 'conectado'){
-      console.log(message.payloadString.substr(9, 15))
+      console.log(message.payloadString.substr(9, 20))
       // setInfo(`Traseiro: ${message.payloadString.substr(8, 15)}`);
-      setCon(message.payloadString.substr(9, 15));
+      setCon(message.payloadString.substr(9, 20));
     }
-    if(message.payloadString.substr(0, 7) == 'frontal2'){
-      console.log(message.payloadString.substr(7, 15))
+    if(message.payloadString.substr(0, 8) == 'frontal2'){
+      console.log(message.payloadString.substr(8, 20))
       // setText(`Frontal: ${message.payloadString.substr(7, 15)}`);
-      setText2(message.payloadString.substr(7, 15));
+      setText2(message.payloadString.substr(8, 20));
     }
-    if(message.payloadString.substr(0, 8) == 'traseiro2'){
-      console.log(message.payloadString.substr(8, 15))
-      // setInfo(`Traseiro: ${message.payloadString.substr(8, 15)}`);
-      setInfo2(message.payloadString.substr(8, 15));
-    }
-    console.log(message.payloadString.substr(0, 9))
-    if(message.payloadString.substr(0, 9) == 'conectado'){
+    if(message.payloadString.substr(0, 9) == 'traseiro2'){
       console.log(message.payloadString.substr(9, 15))
       // setInfo(`Traseiro: ${message.payloadString.substr(8, 15)}`);
-      setCon(message.payloadString.substr(9, 15));
+      setInfo2(message.payloadString.substr(9, 15));
+    }
+    console.log(message.payloadString.substr(0, 10))
+    if(message.payloadString.substr(0, 10) == 'conectado'){
+      console.log(message.payloadString.substr(10, 20))
+      // setInfo(`Traseiro: ${message.payloadString.substr(8, 15)}`);
+      setCon(message.payloadString.substr(10, 20));
     }
     // setText(`Nova Mensagem: ${message.payloadString}`);
   };
