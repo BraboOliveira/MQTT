@@ -124,15 +124,15 @@ export default function MqttLog (props){
     <View style={styles.container}>
       <View style={styles.bloco}>
         <Text style={{fontSize:18, marginBottom: 10}}>PÉ ESQUERDO</Text>
-        <Text style={{fontSize: 18, alignContent: 'center'}}>Sensor Frontal: {text1}</Text>
-        <Text style={{fontSize: 18, alignContent: 'center'}}>Sensor Traseiro: {info1}</Text>
-        <Text style={{fontSize: 18, alignContent: 'center'}}>Status: {con}</Text>
+        <Text style={{fontSize: 18, alignContent: 'center'}}>Sensor Frontal: <Text style={styles.textColor}>{text1}</Text></Text>
+        <Text style={{fontSize: 18, alignContent: 'center'}}>Sensor Traseiro: <Text style={styles.textColor}>{info1}</Text></Text>
+        <Text style={{fontSize: 18, alignContent: 'center'}}>Status: <Text style={styles.textColor}>{con}</Text></Text>
       </View>
       <View style={styles.bloco}>
         <Text style={{fontSize:18, marginBottom: 10}}>PÉ DIREITO</Text>
-        <Text style={{fontSize: 18, alignContent: 'center'}}>Sensor Frontal: {text2}</Text>
-        <Text style={{fontSize: 18, alignContent: 'center'}}>Sensor Traseiro: {info2}</Text>
-        <Text style={{fontSize: 18, alignContent: 'center'}}>Status: {con}</Text>
+        <Text style={{fontSize: 18, alignContent: 'center'}}>Sensor Frontal: <Text style={styles.textColor}>{text2}</Text></Text>
+        <Text style={{fontSize: 18, alignContent: 'center'}}>Sensor Traseiro: <Text style={styles.textColor}>{info2}</Text></Text>
+        <Text style={{fontSize: 18, alignContent: 'center'}}>Status: <Text style={styles.textColor}>{con}</Text></Text>
       </View>
     </View>
   );
@@ -152,5 +152,8 @@ const styles = StyleSheet.create({
     width: '50%',
     height: '50%',
     margin: 5,
+  },
+  textColor: {
+    color : '#ff0000',
   },
 });
