@@ -11,20 +11,17 @@ init({
   sync: {},
 });
 
-const styles = StyleSheet.create({
-  container: {
-    width: '100%',
-    height: '100%',
-  },
-});
 
 export default function MqttLog (props){
   const { style } = props;
   const clientID = Math.floor(Math.random() * 10000) + 1;
-  const [text, setText] = useState('');
   const [listaMqtt,setListaMqtt] = useState([])
-  const [info,setInfo] = useState('')
+  const [text1, setText1] = useState('');
+  const [info1,setInfo1] = useState('')
+  const [text2, setText2] = useState('');
+  const [info2,setInfo2] = useState('')
   const [con,setCon] = useState('')
+  const [info,setInfo] = useState('')
 
   const [clientInfo, setClientInfo] = useState({
     BROKER: 'broker.hivemq.com',
@@ -82,15 +79,31 @@ export default function MqttLog (props){
   };
 
   function onMessageArrived (message) {
-    if(message.payloadString.substr(0, 7) == 'frontal'){
+    if(message.payloadString.substr(0, 7) == 'frontal1'){
       console.log(message.payloadString.substr(7, 15))
       // setText(`Frontal: ${message.payloadString.substr(7, 15)}`);
-      setText(message.payloadString.substr(7, 15));
+      setText1(message.payloadString.substr(7, 15));
     }
-    if(message.payloadString.substr(0, 8) == 'traseiro'){
+    if(message.payloadString.substr(0, 8) == 'traseiro1'){
       console.log(message.payloadString.substr(8, 15))
       // setInfo(`Traseiro: ${message.payloadString.substr(8, 15)}`);
-      setInfo(message.payloadString.substr(8, 15));
+      setInfo1(message.payloadString.substr(8, 15));
+    }
+    console.log(message.payloadString.substr(0, 9))
+    if(message.payloadString.substr(0, 9) == 'conectado'){
+      console.log(message.payloadString.substr(9, 15))
+      // setInfo(`Traseiro: ${message.payloadString.substr(8, 15)}`);
+      setCon(message.payloadString.substr(9, 15));
+    }
+    if(message.payloadString.substr(0, 7) == 'frontal2'){
+      console.log(message.payloadString.substr(7, 15))
+      // setText(`Frontal: ${message.payloadString.substr(7, 15)}`);
+      setText2(message.payloadString.substr(7, 15));
+    }
+    if(message.payloadString.substr(0, 8) == 'traseiro2'){
+      console.log(message.payloadString.substr(8, 15))
+      // setInfo(`Traseiro: ${message.payloadString.substr(8, 15)}`);
+      setInfo2(message.payloadString.substr(8, 15));
     }
     console.log(message.payloadString.substr(0, 9))
     if(message.payloadString.substr(0, 9) == 'conectado'){
@@ -108,17 +121,36 @@ export default function MqttLog (props){
   };
 
   return (
-    <View style={style}>
-      <Text style={{fontSize:24, marginBottom: 10}}>Quantidades de toque:</Text>
-      <Text style={{fontSize: 24, alignContent: 'center'}}>Sensor Frontal: {text}</Text>
-      <Text style={{fontSize: 24, alignContent: 'center'}}>Sensor Traseiro: {info}</Text>
-      <Text style={{fontSize: 24, alignContent: 'center'}}>Status do Sensor:{con}</Text>
-      {/* <Button
-              onPress={()=>{Envio('teste')}}
-              title="Envio"
-              color="#841584"
-              accessibilityLabel="Learn more about this purple button"
-      /> */}
+    <View style={styles.container}>
+      <View style={styles.bloco}>
+        <Text style={{fontSize:18, marginBottom: 10}}>PÉ ESQUERDO</Text>
+        <Text style={{fontSize: 18, alignContent: 'center'}}>Sensor Frontal: {text1}</Text>
+        <Text style={{fontSize: 18, alignContent: 'center'}}>Sensor Traseiro: {info1}</Text>
+        <Text style={{fontSize: 18, alignContent: 'center'}}>Status: {con}</Text>
+      </View>
+      <View style={styles.bloco}>
+        <Text style={{fontSize:18, marginBottom: 10}}>PÉ DIREITO</Text>
+        <Text style={{fontSize: 18, alignContent: 'center'}}>Sensor Frontal: {text2}</Text>
+        <Text style={{fontSize: 18, alignContent: 'center'}}>Sensor Traseiro: {info2}</Text>
+        <Text style={{fontSize: 18, alignContent: 'center'}}>Status: {con}</Text>
+      </View>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    width: '98%',
+    height: '50%',
+    alignSelf: 'center',
+    backgroundColor: '#fff',
+    flexDirection: "row",
+    borderRadius: 5,
+    paddingTop: 10,
+  },
+  bloco: {
+    width: '50%',
+    height: '50%',
+    margin: 5,
+  },
+});
